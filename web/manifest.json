@@ -1,0 +1,35 @@
+{
+    "name": "Андрей Никитцев",
+    "short_name": "Никитцев",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#FBFAF8",
+    "theme_color": "#FBFAF8",
+    "description": "Андрей Никитцев — Flutter-разработчик и основатель NotDoneByOne. Строю продукты, команды и процессы с нуля.",
+    "orientation": "portrait-primary",
+    "prefer_related_applications": false,
+    "icons": [
+        {
+            "src": "icons/Icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/Icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/Icon-maskable-192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "icons/Icon-maskable-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ]
+}

@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <base href="$FLUTTER_BASE_HREF">
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
+  <meta name="description" content="Андрей Никитцев — Flutter-разработчик и основатель NotDoneByOne. Строю продукты, команды и процессы с нуля.">
+  <meta property="og:title" content="Андрей Никитцев">
+  <meta property="og:description" content="Андрей Никитцев — Flutter-разработчик и основатель NotDoneByOne. Строю продукты, команды и процессы с нуля.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#FBFAF8" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#111113" media="(prefers-color-scheme: dark)">
+  <meta name="color-scheme" content="light dark">
+
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Никитцев">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="manifest" href="manifest.json">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <title>Андрей Никитцев</title>
+
+  <style>
+    :root {
+      --bg: #FBFAF8;
+      --ink: #16161A;
+      --ink2: #55555C;
+      --ink3: #85858C;
+      --line: #E2DFD9;
+      --accent: #C8401C;
+      --h: clamp(560px, calc(100dvh - 64px), 852px);
+      --w: calc(var(--h) * 393 / 852);
+      --bezel: 12px;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #111113;
+        --ink: #EDEDEE;
+        --ink2: #A9A9B0;
+        --ink3: #77777E;
+        --line: #2A2A2E;
+        --accent: #F06A3F;
+      }
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      overscroll-behavior: none;
+    }
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Onest', system-ui, -apple-system, 'Segoe UI', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      padding: 0;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+    .shell { display: block; height: 100%; }
+    .eyebrow {
+      margin: 0 0 20px;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink3);
+    }
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(44px, 5.5vw, 64px);
+      font-weight: 600;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+    }
+    .role {
+      margin: 0 0 28px;
+      font-size: 20px;
+      color: var(--ink2);
+    }
+    .lead {
+      margin: 0 0 36px;
+      max-width: 460px;
+      font-size: 17px;
+      line-height: 1.6;
+      color: var(--ink2);
+    }
+    .links { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; }
+    .btn {
+      display: inline-block;
+      padding: 14px 22px;
+      border-radius: 14px;
+      background: var(--accent);
+      color: #fff;
+      font-weight: 600;
+      font-size: 16px;
+      text-decoration: none;
+    }
+    .btn:hover { filter: brightness(1.08); }
+    .link {
+      color: var(--ink);
+      font-weight: 500;
+      text-decoration: none;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 2px;
+    }
+    .link:hover { border-bottom-color: var(--accent); }
+    .hint { margin: 32px 0 0; max-width: 460px; font-size: 13px; line-height: 1.5; color: var(--ink3); }
+    a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+    .intro {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      padding: 0;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+    .phone { display: contents; }
+    .btns { display: none; }
+    #app {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100dvh;
+      background: #000;
+      overflow: hidden;
+      overscroll-behavior: none;
+    }
+    #loader {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      background: #000;
+      color: #fff;
+      font-size: 14px;
+      pointer-events: none;
+    }
+    #loader svg { width: 56px; height: 56px; animation: pulse 1.6s ease-in-out infinite; }
+    #loader span { opacity: 0.6; }
+    @keyframes pulse { 0%, 100% { opacity: 0.35; transform: scale(0.94); } 50% { opacity: 1; transform: scale(1); } }
+    @media (prefers-reduced-motion: reduce) {
+      #loader svg { animation: none; }
+    }
+
+    body.framed .shell {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 32px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 80px;
+    }
+    body.framed .intro {
+      position: static;
+      width: auto;
+      height: auto;
+      margin: 0;
+      overflow: visible;
+      clip: auto;
+      white-space: normal;
+    }
+    body.framed .phone {
+      display: block;
+      position: relative;
+      width: calc(var(--w) + var(--bezel) * 2);
+      height: calc(var(--h) + var(--bezel) * 2);
+      padding: var(--bezel);
+      border-radius: calc(var(--h) * 0.0727 + var(--bezel));
+      background: linear-gradient(145deg, #5b5c60 0%, #2b2c2f 18%, #1a1a1c 50%, #2b2c2f 82%, #55565a 100%);
+      box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.28),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.18),
+        inset 0 0 0 3px #0b0b0c,
+        0 40px 100px rgba(0, 0, 0, 0.35),
+        0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+    body.framed .screen {
+      position: relative;
+      width: var(--w);
+      height: var(--h);
+      border-radius: calc(var(--h) * 0.0645);
+      overflow: hidden;
+      background: #000;
+      box-shadow: 0 0 0 3px #0b0b0c;
+      clip-path: inset(0 round calc(var(--h) * 0.0645));
+    }
+    body.framed #app {
+      position: absolute;
+      inset: auto;
+      top: 0;
+      left: 0;
+      width: var(--w);
+      height: var(--h);
+    }
+    body.framed .btns { display: block; }
+    .btn-side {
+      position: absolute;
+      width: 4px;
+      background: linear-gradient(90deg, #4a4b4f, #232427 60%, #38393c);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+    }
+    .btn-side.l { left: -3px; border-radius: 3px 0 0 3px; }
+    .btn-side.r { right: -3px; border-radius: 0 3px 3px 0; transform: scaleX(-1); }
+    .btn-action { top: calc(var(--h) * 0.135); height: calc(var(--h) * 0.036); }
+    .btn-vol-up { top: calc(var(--h) * 0.205); height: calc(var(--h) * 0.068); }
+    .btn-vol-dn { top: calc(var(--h) * 0.295); height: calc(var(--h) * 0.068); }
+    .btn-power { top: calc(var(--h) * 0.245); height: calc(var(--h) * 0.105); }
+  </style>
+</head>
+<body>
+  <script>
+    (function () {
+      var mq = window.matchMedia('(min-width: 900px)');
+      function sync() {
+        var on = mq.matches && window.innerHeight >= 600;
+        document.body.classList.toggle('framed', on);
+      }
+      sync();
+      mq.addEventListener('change', sync);
+      window.addEventListener('resize', sync);
+    })();
+  </script>
+  <noscript>
+    <p style="padding:24px;font-family:sans-serif">
+      Андрей Никитцев — Flutter-разработчик и основатель NotDoneByOne.
+      Для просмотра визитки включите JavaScript.
+      Почта: <a href="mailto:notdonebyone@internet.ru">notdonebyone@internet.ru</a>,
+      GitHub: <a href="https://github.com/n3xxxt">github.com/n3xxxt</a>.
+    </p>
+  </noscript>
+
+  <main class="shell">
+    <section class="intro">
+      <p class="eyebrow">Визитка · Flutter Web</p>
+      <h1>Андрей Никитцев</h1>
+      <p class="role">Flutter-разработчик · основатель NotDoneByOne</p>
+      <p class="lead">Это мой телефон. Разблокируйте его и откройте приложения — всё внутри написано на Flutter.</p>
+      <div class="links">
+        <a class="btn" href="https://github.com/n3xxxt/n3xxxt.github.io">Исходники →</a>
+        <a class="link" href="mailto:notdonebyone@internet.ru">Почта</a>
+        <a class="link" href="https://github.com/n3xxxt">GitHub</a>
+      </div>
+      <p class="hint">Колесо мыши и перетаскивание работают внутри телефона · Esc — на рабочий стол</p>
+    </section>
+
+    <div class="phone">
+      <div class="btns" aria-hidden="true">
+        <i class="btn-side l btn-action"></i>
+        <i class="btn-side l btn-vol-up"></i>
+        <i class="btn-side l btn-vol-dn"></i>
+        <i class="btn-side r btn-power"></i>
+      </div>
+      <div class="screen">
+        <div id="app">
+          <div id="loader" role="status">
+            <svg viewBox="0 0 48 48" fill="none" stroke="#fff" stroke-width="3" aria-hidden="true">
+              <circle cx="24" cy="24" r="20"/>
+              <circle cx="24" cy="24" r="11"/>
+              <circle cx="24" cy="24" r="3" fill="#fff" stroke="none"/>
+            </svg>
+            <span>Загрузка…</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    {{flutter_js}}
+    {{flutter_build_config}}
+    _flutter.loader.load({
+      onEntrypointLoaded: async (engineInitializer) => {
+        const appRunner = await engineInitializer.initializeEngine({
+          hostElement: document.querySelector('#app')
+        });
+        await appRunner.runApp();
+        document.getElementById('loader')?.remove();
+        document.getElementById('app').addEventListener('wheel', function (e) { e.preventDefault(); }, { passive: false });
+      }
+    });
+  </script>
+</body>
+</html>
